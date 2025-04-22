@@ -163,6 +163,17 @@ int MEMPHY_dump(struct memphy_struct *mp)
   /*TODO dump memphy contnt mp->storage
    *     for tracing the memory content
    */
+   {
+dump_memphy(mp);
+return 0;
+   }
+   void dump_memphy(struct memphy_struct *mp)
+{
+    int i;
+    int max_bytes = mp->maxsz;
+
+    printf("=== Dump memphy content ===\n");
+   
    for (int i = 0; i < mp->maxsz; i++) {
       printf("%02X ", mp->storage[i]);
       if ((i + 1) % 16 == 0) printf("\n");
